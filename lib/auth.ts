@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
 import { SurrealDBAdapter } from '@auth/surrealdb-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import OAuthProvider from 'next-auth/providers.Generic_OAuth2';
 import Surreal from 'surrealdb';
 
 export const authOptions: NextAuthOptions = {
@@ -12,6 +13,7 @@ export const authOptions: NextAuthOptions = {
     password: process.env.SURREAL_PASS || 'root',
   }),
   providers: [
+    // Credentials provider (email/password)
     CredentialsProvider({
       name: 'credentials',
       credentials: {
@@ -57,11 +59,32 @@ export const authOptions: NextAuthOptions = {
         };
       },
     }),
+    // Generic OIDC/OAuth2 SSO provider
+    OAuthProvider({
+      name: process.env.OIDC_PROVIDER_NAME || 'SSO',
+      clientId: process.env.OIDC_CLIENT_ID || '',
+      clientSecret: process.env.OIDC_CLIENT_SECRET || '',
+      issuer: process.env.OIDC_ISSUER || '',
+      idToken: true,
+      wellKnown: process.env.OIDC_WELL_KNOWN,
+      authorization: { params: { scope: 'openid profile email' } },
+      token: process.env.OIDC_TOKEN_URL,
+      userinfo: process.env.OIDC_USERINFO_URL,
+      profile(profile) {
+        return {
+          id: profile.sub || profile.id,
+          name: profile.name || profile.preferred_username,
+          email: profile.email,
+          image: profile.picture,
+        };
+      },
+    }),
   ],
   session: { strategy: 'jwt' },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, profile }) {
       if (user) token.id = user.id;
+      if (profile) token.profile = profile;
       return token;
     },
     async session({ session, token }) {
