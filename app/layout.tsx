@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import './app/globals.css';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Build Autonomous Agents with LangChain + Next.js',
-  description: 'Master the art of building code-first autonomous AI agents using LangChain Deep Agent Framework and Next.js',
+  title: 'LangGraph + Next.js Course | Build Autonomous AI Systems',
+  description: 'Master the art of building code-first autonomous AI systems using LangGraph Deep Agent Framework and Next.js',
 };
 
 export default function RootLayout({
