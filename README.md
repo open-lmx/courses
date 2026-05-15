@@ -51,7 +51,7 @@ docker run -p 3000:3000 courses
 
 ## Links
 
-- [Become a Teacher](/become-teacher)
+- [Become a Teacher](/teacher)
 - Support: support@openautonomyx.com
 
 ## License
