@@ -59,3 +59,21 @@ docker run -p 3000:3000 courses
 MIT License - See [Open Source Policy](/opensource)
 
 © 2026 OpenAutonomyx (OPCI) Private Limited. A private limited company incorporated under the Companies Act, 2013. All rights reserved.
+
+## Deployment
+
+### GitHub Pages
+Live at: https://open-lmx.github.io/courses/
+
+Auto-deploys on push to `main` branch via GitHub Actions.
+
+### Docker Hub
+```bash
+docker build -t open-lmx/courses .
+docker push open-lmx/courses
+```
+
+## License
+MIT License - See [Open Source Policy](/opensource)
+
+© 2026 OpenAutonomyx (OPCI) Private Limited. A private limited company incorporated under the Companies Act, 2013. All rights reserved.
