@@ -84,21 +84,6 @@ export default function Register() {
             </select>
           </div>
 
-          <div className="pricing-summary">
-            <div className="price-row">
-              <span>Course Price</span>
-              <span className="original">$199</span>
-            </div>
-            <div className="price-row discount">
-              <span>Early Bird Discount</span>
-              <span>-$100</span>
-            </div>
-            <div className="price-row total">
-              <span>Total</span>
-              <span className="total-price">$99</span>
-            </div>
-          </div>
-
           <button type="submit" className="btn-submit">
             Complete Enrollment
           </button>

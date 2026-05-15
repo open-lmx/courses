@@ -119,26 +119,12 @@ export const agent = graph.compile();`}</code></pre>
         </div>
       </section>
 
-      <section className="pricing">
-        <div className="pricing-card">
-          <div className="pricing-badge">Early Bird</div>
-          <div className="pricing-amount">
-            <span className="currency">$</span>
-            <span className="price">99</span>
-            <span className="original">$199</span>
-          </div>
-          <h3>Complete Course Access</h3>
-          <ul className="pricing-features">
-            <li>✓ 20 Video Lessons</li>
-            <li>✓ 50+ Code Examples</li>
-            <li>✓ Hands-on Projects</li>
-            <li>✓ Certificate of Completion</li>
-            <li>✓ Lifetime Access</li>
-          </ul>
-          <Link href="/register" className="btn-pricing">
-            Enroll Now
-          </Link>
-        </div>
+      <section className="cta">
+        <h2>Ready to Build Autonomous AI Systems?</h2>
+        <p>Join the course and master LangGraph with Next.js from foundations to production.</p>
+        <Link href="/register" className="btn-cta">
+          Enroll Now
+        </Link>
       </section>
 
       <footer className="footer">
