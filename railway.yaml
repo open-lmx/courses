@@ -1,0 +1,18 @@
+# Railway Deployment Config
+# Docs: https://docs.railway.app
+
+environment: node
+
+build:
+  builder: NEXTSH_BUILDER
+  # or: BUILDER_PACKAGE
+
+web:
+  command: npm start
+  env:
+    - NODE_ENV=production
+
+# Add env vars in Railway dashboard:
+# SURREAL_URL, SURREAL_USER, SURREAL_PASS, SURREAL_NS, SURREAL_DB
+# NEXTAUTH_SECRET, NEXTAUTH_URL
+# OIDC_*, FRAPPE_*, MOODLE_*
