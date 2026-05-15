@@ -1,7 +1,7 @@
 FROM node:20-alpine AS base
 
 # OCI Image Labels
-LABEL org.opencontainers.image.authors="Autonomyx Academy"
+LABEL org.opencontainers.image.authors="Chinmay Panda"
 LABEL org.opencontainers.image.source="https://github.com/autonomyx/academy"
 LABEL org.opencontainers.image.description="LangGraph + Next.js Course"
 
