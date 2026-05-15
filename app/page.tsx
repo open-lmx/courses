@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="landing">
       <nav className="nav">
-        <div className="nav-brand">LMX Academy</div>
+        <div className="nav-brand">Autonomyx Academy</div>
         <div className="nav-links">
           <Link href="/#curriculum">Curriculum</Link>
           <Link href="/register" className="btn-nav">Enroll Now</Link>
@@ -154,7 +154,7 @@ export const agent = graph.compile();`}</code></pre>
 
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-brand">LMX Academy</div>
+          <div className="footer-brand">Autonomyx Academy</div>
           <p>© 2026 LMX. All rights reserved.</p>
         </div>
       </footer>

@@ -37,7 +37,7 @@ export default function Register() {
   return (
     <main className="register">
       <nav className="nav">
-        <Link href="/" className="nav-brand">LMX Academy</Link>
+        <Link href="/" className="nav-brand">Autonomyx Academy</Link>
       </nav>
 
       <div className="register-container">
