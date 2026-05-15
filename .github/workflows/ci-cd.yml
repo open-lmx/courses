@@ -52,6 +52,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha}}
+            ghcr.io/autonomyx/academy:latest
+            ghcr.io/autonomyx/academy:${{ github.sha}}
           platforms: linux/amd64,linux/arm64
