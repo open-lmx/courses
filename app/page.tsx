@@ -155,7 +155,7 @@ export const agent = graph.compile();`}</code></pre>
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">Autonomyx Academy</div>
-          <p>© 2026 LMX. All rights reserved.</p>
+          <p>© 2026 OpenAutonomyx (OPCI) Private Limited. All rights reserved.</p>
         </div>
       </footer>
     </main>
