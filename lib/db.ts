@@ -1,7 +1,17 @@
+/**
+ * SurrealDB Database Client
+ * Docs: https://surrealdb.com/docs
+ * Based on: SurrealDB SDK v2
+ */
+
 import Surreal from 'surrealdb';
 
 let db: Surreal | null = null;
 
+/**
+ * Get or create database connection
+ * Source: SurrealDB SDK - getDb() pattern
+ */
 export async function getDb() {
   if (db) return db;
 
@@ -20,6 +30,10 @@ export async function getDb() {
   return db;
 }
 
+/**
+ * Close database connection
+ * Source: SurrealDB SDK - close() method
+ */
 export async function closeDb() {
   if (db) {
     await db.close();
@@ -27,50 +41,79 @@ export async function closeDb() {
   }
 }
 
-// SurrealQL query helper
+/**
+ * Execute raw SurrealQL query
+ * Source: https://surrealdb.com/docs/learn/fundamentals/queries
+ * @param sql - SurrealQL statement
+ * @param vars - Query variables
+ */
 export async function query<T>(sql: string, vars?: Record<string, any>): Promise<T[]> {
   const database = await getDb();
   const result = await database.query<T[]>(sql, vars);
   return result[0] ? result[0] : [];
 }
 
-// SurrealQL: SELECT
+/**
+ * Select records from table
+ * Source: https://surrealdb.com/docs/learn/fundamentals/queries#select
+ */
 export async function select<T>(table: string, limit = 10): Promise<T[]> {
   return query<T>(`SELECT * FROM ${table} LIMIT ${limit}`);
 }
 
-// SurrealQL: CREATE
+/**
+ * Create new record
+ * Source: https://surrealdb.com/docs/reference/query-language/statements/create
+ */
 export async function create<T>(table: string, data: any): Promise<T> {
   const database = await getDb();
   const result = await database.create<T>(table, data);
   return result[0];
 }
 
-// SurrealQL: UPDATE
+/**
+ * Update existing record
+ * Source: https://surrealdb.com/docs/reference/query-language/statements/update
+ */
 export async function update<T>(id: string, data: any): Promise<T> {
   const database = await getDb();
   const result = await database.update<T>(id, data);
   return result[0];
 }
 
-// SurrealQL: DELETE
+/**
+ * Delete record
+ * Source: https://surrealdb.com/docs/reference/query-language/statements/delete
+ */
 export async function remove(id: string): Promise<void> {
   const database = await getDb();
   await database.delete(id);
 }
 
-// Knowledge Graph: Define edge tables (relations)
-export async function defineEdge(name: string, from: string, to: string, edge_fields?: Record<string, string>) {
+/**
+ * Define graph edge table (TYPE RELATION)
+ * Source: https://surrealdb.com/docs/learn/data-models/graph/creating-relations
+ * @param name - Edge table name
+ * @param from - Source table
+ * @param to - Target table
+ * @param edge_fields - Additional edge fields
+ */
+export async function defineEdge(
+  name: string, 
+  from: string, 
+  to: string, 
+  edge_fields?: Record<string, string>
+) {
   const database = await getDb();
-  // Define TYPE RELATION with IN/OUT for graph edges
-  const sql = `DEFINE TABLE IF NOT EXISTS ${name} TYPE RELATION`;
-  await database.query(sql);
   
-  // Define FROM and TO edges
+  // Define TYPE RELATION for graph edges
+  await database.query(`DEFINE TABLE IF NOT EXISTS ${name} TYPE RELATION`);
+  
+  // Define IN and OUT to specify edge direction
   await database.query(`DEFINE FIELD IF NOT EXISTS in ON ${name} TYPE ${from}`);
   await database.query(`DEFINE FIELD IF NOT EXISTS out ON ${name} TYPE ${to}`);
   
-  // Define additional edge fields
+  // Define additional metadata fields
   if (edge_fields) {
     for (const [field, type] of Object.entries(edge_fields)) {
       await database.query(`DEFINE FIELD IF NOT EXISTS ${field} ON ${name} TYPE ${type}`);
@@ -78,13 +121,28 @@ export async function defineEdge(name: string, from: string, to: string, edge_fi
   }
 }
 
-// Knowledge Graph: Create edge between records
-export async function relate(edge: string, from_id: string, to_id: string, data?: Record<string, any>) {
+/**
+ * Create graph relationship (edge)
+ * Source: https://surrealdb.com/docs/learn/fundamentals/relationships/graph-relations
+ * @param edge - Edge table name
+ * @param from_id - Source record ID
+ * @param to_id - Target record ID
+ * @param data - Edge metadata
+ */
+export async function relate(
+  edge: string, 
+  from_id: string, 
+  to_id: string, 
+  data?: Record<string, any>
+) {
   const database = await getDb();
   return await database.relate(`${edge}`, { in: from_id, out: to_id, ...data });
 }
 
-// Knowledge Graph: Find relationships
+/**
+ * Find relationships
+ * Source: SurrealDB graph queries
+ */
 export async function getEdges(edge: string, from_id?: string, to_id?: string) {
   let sql = `SELECT * FROM ${edge}`;
   const vars: Record<string, string> = {};
@@ -104,17 +162,26 @@ export async function getEdges(edge: string, from_id?: string, to_id?: string) {
   return query(sql, vars);
 }
 
-// Link course to skill in knowledge graph
+/**
+ * Link course to skill (knowledge graph)
+ * Source: SurrealDB RELATE statement
+ */
 export async function linkCourseToSkill(course_id: string, skill_id: string, level = 'Intermediate') {
   return relate('course_skill', course_id, skill_id, { level });
 }
 
-// Link user to course (enrollment)
+/**
+ * Enroll user in course
+ * Source: SurrealDB graph edge with metadata
+ */
 export async function enrollUser(user_id: string, course_id: string, progress = 0) {
   return relate('user_course', user_id, course_id, { progress, enrolled_at: new Date().toISOString() });
 }
 
-// Link course to job (preparation for)
+/**
+ * Link course to job preparation
+ * Source: SurrealDB knowledge graph
+ */
 export async function prepareForJob(course_id: string, job_id: string) {
   return relate('course_job', course_id, job_id, {});
 }
