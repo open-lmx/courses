@@ -155,7 +155,7 @@ export const agent = graph.compile();`}</code></pre>
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-brand">OpenAutonomyx (OPCI) Private Limited</div>
-          <p>© 2026 OpenAutonomyx (OPCI) Private Limited. All rights reserved.</p>
+          <p>© 2026 OpenAutonomyx (OPCI) Private Limited. A private limited company incorporated under the Companies Act, 2013. All rights reserved.</p>
         </div>
       </footer>
     </main>
