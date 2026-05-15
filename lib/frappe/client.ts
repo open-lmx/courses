@@ -94,3 +94,44 @@ export async function syncToFrappe(courseId: string) {
 }
 
 export { FrappeClient };
+
+// Frappe HR Job Opening integration
+export class FrappeHRClient extends FrappeClient {
+  async getJobOpenings(filters?: { status?: string; department?: string }) {
+    const query = 'Job Opening?fields=["*"]';
+    if (filters?.status) {
+      return this.request(`${query}&filters=[["status","=","${filters.status}"]]`);
+    }
+    return this.request(query);
+  }
+
+  async createJobOpening(job: { 
+    job_title: string; 
+    department: string; 
+    description: string; 
+    vacancy: number;
+    status?: string;
+    posting_date?: string;
+    closure_date?: string;
+  }) {
+    return this.request('Job Opening', 'POST', job);
+  }
+
+  async getJobApplications(job: string) {
+    return this.request(`Job Applicant?fields=["*"]&filters=[["job_title","=","${job}"]]`);
+  }
+
+  async createJobApplication(app: { 
+    job_title: string; 
+    applicant_name: string; 
+    email_id: string; 
+    phone: string;
+    resume?: string;
+  }) {
+    return this.request('Job Applicant', 'POST', app);
+  }
+
+  async getDepartments() {
+    return this.request('Department?fields=["*"]');
+  }
+}
