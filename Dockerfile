@@ -1,5 +1,10 @@
 FROM node:20-alpine AS base
 
+# OCI Image Labels
+LABEL org.opencontainers.image.authors="LMX Academy"
+LABEL org.opencontainers.image.source="https://github.com/open-lmx/courses"
+LABEL org.opencontainers.image.description="LangGraph + Next.js Course"
+
 # Install dependencies only when needed
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
