@@ -1,80 +1,47 @@
-# LangGraph + Next.js Course
+# OpenAutonomyx Academy Courses
 
+Build production-ready AI systems with expert-led courses on autonomous agents, LLMs, and full-stack AI development.
+
+## Our Courses
+
+### 🧠 LangGraph + Next.js Course
 Build code-first autonomous AI systems using LangGraph Deep Agent Framework and Next.js.
 
-## About This Course
+- **Duration:** 8 weeks
+- **Level:** Intermediate to Advanced
+- **Prerequisites:** Python, TypeScript, Basic AI/ML concepts
 
-Master autonomous AI agent development with **LangGraph** and **Next.js**. This comprehensive course covers multi-tenant architecture, authentication, CI/CD with GHCR, Docker OCI compliance, and billing integration.
+[Learn More →](/_README.md)
 
-**Enroll Now** → [https://courses.open-lmx.com/register](/register)
+---
+
+### 🚀 More Courses Coming Soon
+
+- **LLM Fine-tuning Workshop** - Customize language models for your domain
+- **AI Agents with MCP** - Build Model Context Protocol integrations
+- **Multi-Agent Systems** - Coordinate multiple AI agents
+
+---
 
 ## Faculty
 
 - **Chinmay Panda** - AI Researcher & Developer
 
-## Course Curriculum
-
-### Module 1: Foundations of AI Systems
-- Introduction to Autonomous AI
-- LangGraph Architecture
-- Agent State Management
-
-### Module 2: Core Agent Development
-- Building Your First Agent
-- Tool Integration
-- Memory & Context
-
-### Module 3: Next.js Integration
-- Full-Stack Agent Apps
-- API Routes & Webhooks
-- Real-time Updates
-
-### Module 4: Advanced Patterns
-- Multi-Tenant Architecture
-- Custom Authentication
-- Webhook Integrations (Lago Billing)
-
-### Module 5: Production Deployment
-- Docker OCI Compliance
-- CI/CD with GitHub Actions
-- GHCR Container Registry
-
-## Features
-
-- 🔐 **NextAuth.js** - Secure authentication
-- 🐳 **Docker** - OCI-compliant multi-stage builds
-- ⚡ **CI/CD** - GitHub Actions + GHCR
-- 💳 **Lago** - Billing integration (webhooks)
-- 📱 **Responsive** - Mobile-first design
-
 ## Quick Start
 
 ```bash
-# Clone the repo
 git clone https://github.com/open-lmx/courses.git
 cd courses
-
-# Install dependencies
 npm install
-
-# Run locally
 npm run dev
 ```
 
 ## Docker
 
 ```bash
-# Build
 docker build -t open-lmx/courses .
-
-# Run
 docker run -p 3000:3000 open-lmx/courses
 ```
-
-## Live Demos
-
-- [Register](/register)
-- [Instructors](/instructors)
 
 ## Policies
 
@@ -93,8 +60,6 @@ docker run -p 3000:3000 open-lmx/courses
 
 ### GitHub Pages
 Live at: https://open-lmx.github.io/courses/
-
-Auto-deploys on push to `main` branch via GitHub Actions.
 
 ### Docker Hub
 ```bash
