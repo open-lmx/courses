@@ -2,14 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Become a Teacher | OpenAutonomyx (OPCI) Private Limited',
+  title: 'Instructors | OpenAutonomyx (OPCI) Private Limited',
   description: 'Join our team of expert instructors and share your knowledge.',
 };
 
 export default function BecomeTeacherPage() {
   return (
     <main className="page-content">
-      <h1>Become a Teacher</h1>
+      <h1>Instructors</h1>
       <p className="subtitle">Share your expertise with the next generation of AI developers.</p>
 
       <section>
@@ -55,7 +55,7 @@ export default function BecomeTeacherPage() {
 
       <section>
         <h2>Apply Now</h2>
-        <p>Email: teach@openautonomyx.com</p>
+        <p>Email: instructors@openautonomyx.com</p>
       </section>
     </main>
   );
