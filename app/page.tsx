@@ -17,6 +17,7 @@ export default function Home() {
       <nav className="nav">
         <div className="nav-brand">OpenAutonomyx (OPCI) Private Limited</div>
         <div className="nav-links">
+          <Link href="/instructors">Instructors</Link>
           <Link href="/#curriculum">Curriculum</Link>
           <Link href="/register" className="btn-nav">Enroll Now</Link>
         </div>
