@@ -5,7 +5,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: {
     default: 'LangGraph + Next.js Course | Build Autonomous AI Systems',
-    template: '%s | Autonomyx Academy',
+    template: '%s | OpenAutonomyx (OPCI) Private Limited',
   },
   description: 'Master the art of building code-first autonomous AI systems using LangGraph Deep Agent Framework and Next.js. 20 comprehensive lessons from foundations to production.',
   keywords: [
@@ -20,15 +20,15 @@ export const metadata: Metadata = {
     'LLM applications',
     'AI systems course',
   ],
-  authors: [{ name: 'Autonomyx Academy' }],
-  creator: 'Autonomyx Academy',
-  publisher: 'Autonomyx Academy',
+  authors: [{ name: 'OpenAutonomyx (OPCI) Private Limited' }],
+  creator: 'OpenAutonomyx (OPCI) Private Limited',
+  publisher: 'OpenAutonomyx (OPCI) Private Limited',
   metadataBase: new URL('https://github.com/open-lmx/courses'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://github.com/open-lmx/courses',
-    siteName: 'Autonomyx Academy',
+    siteName: 'OpenAutonomyx (OPCI) Private Limited',
     title: 'LangGraph + Next.js Course | Build Autonomous AI Systems',
     description: 'Master the art of building code-first autonomous AI systems using LangGraph Deep Agent Framework and Next.js',
     images: [
