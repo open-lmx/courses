@@ -359,3 +359,49 @@ Presentation: Demo + documentation
 ### Hardware
 - Computer capable of running modern dev tools
 - Reliable internet connection
+
+---
+
+## Database & Backend
+
+### SurrealDB - Primary Database
+- **Website:** https://surrealdb.com
+- **Docs:** https://surrealdb.com/docs
+- **Cloud:** https://cloud.surrealdb.com
+
+### Course Content Storage
+All course data stored in SurrealDB with the following schema:
+
+```sql
+-- Course table
+DEFINE TABLE course SCHEMAFULL;
+DEFINE FIELD title ON course TYPE string;
+DEFINE FIELD description ON course TYPE string;
+DEFINE FIELD level ON course TYPE string;
+DEFINE FIELD duration ON course TYPE string;
+DEFINE FIELD modules ON course TYPE int;
+DEFINE FIELD skills ON course TYPE array;
+DEFINE FIELD status ON course TYPE string;
+DEFINE FIELD created_at ON course TYPE datetime;
+
+-- Module table
+DEFINE TABLE module SCHEMAFULL;
+DEFINE FIELD title ON module TYPE string;
+DEFINE FIELD week ON module TYPE int;
+DEFINE FIELD assignment ON module TYPE object;
+DEFINE FIELD readings ON module TYPE array;
+```
+
+### Source Reference
+This course structure is based on Stanford CS146S:
+- **Official:** https://themodernsoftware.dev
+- **GitHub:** (course materials)
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Frontend | Next.js 14 |
+| Database | SurrealDB 2.0 |
+| Auth | NextAuth.js |
+| Deployment | Vercel |
